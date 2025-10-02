@@ -109,10 +109,13 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
 app.UseAuthorization();
 
 app.MapRazorPages();
 
-app.MapFallbackToPage("/Index"); //fallback to main page
-app.Run();
+// Fallback for unknown paths (Render)
+app.MapFallback(context =>
+{
+    context.Response.Redirect("/"); // Redirect to home
+    return Task.CompletedTask;
+});
