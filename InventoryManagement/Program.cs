@@ -114,4 +114,5 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 
+app.MapFallbackToPage("/Index"); //fallback to main page
 app.Run();
