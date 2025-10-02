@@ -1,0 +1,354 @@
+@page
+@using InventoryManagement.Models;
+@using InventoryManagement.Services;
+@model InventoryManagement.Pages.LeftShelfModel
+@{
+    ViewData["Title"] = "Left Shelf";
+}
+
+<body>
+    <div class="text-center">
+        <h1 class="display-4">Left Shelf Data</h1>
+        <div class="grid-head">
+            <div>Item</div>
+            <div>Quantity</div>
+            <div>Keep Above</div>
+            <div>Delete</div>
+        </div>
+
+        <h4 class="shelf-title">Shelf 6 (top)</h4>
+        @{
+    if (Model.LeftShelf6List != null)
+    {
+        foreach (var leftShelf6 in Model.LeftShelf6List)
+        {
+            <div class="grid shelf">
+                <div>@leftShelf6.Name</div>
+                <div>@leftShelf6.Quantity</div>
+                <div>@leftShelf6.Threshold</div>
+                <div>
+                    <form method="post" asp-page-handler="Delete" asp-route-id="@leftShelf6.Id">
+                        <input type="hidden" name="table" value="shelf6" />
+                        <button class="btn ">Delete</button>
+                    </form>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <p>No leftShelf6s found.</p>
+    }
+    }
+
+        <form class="grid shelf" method="post" asp-page-handler="Add6">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="shelf-title">
+            <input type="text" class="item-input" placeholder="Name" asp-for="NewLeftShelf6.Name"  />
+            <span asp-validation-for="NewLeftShelf6.Name" class="text-danger"></span>
+            </div>
+            <div class="shelf-title">
+                <input type="text" class="item-input" placeholder="Quantity" asp-for="NewLeftShelf6.Quantity" class="form-control" />
+                <span asp-validation-for="NewLeftShelf6.Quantity" class="text-danger"></span>
+            </div>
+            <div class="shelf-title">
+                <input type="text" class="item-input" placeholder="Threshold" asp-for="NewLeftShelf6.Threshold" class="form-control" />
+                <span asp-validation-for="NewLeftShelf6.Threshold" class="text-danger"></span>
+            </div>
+            <div class="shelf-title">
+                <input type="submit" value="Create" class="btn " />
+            </div>
+        </form> 
+
+        <h4 class="shelf-title">Shelf 5</h4>
+
+        @{
+        if (Model.LeftShelf5List != null)
+        {
+            foreach (var leftShelf5 in Model.LeftShelf5List)
+            {
+                <div class="grid shelf">
+                    <div>@leftShelf5.Name</div>
+                    <div>@leftShelf5.Quantity</div>
+                    <div>@leftShelf5.Threshold</div>
+                    <div>
+                        <form method="post" asp-page-handler="Delete" asp-route-id="@leftShelf5.Id">
+                        <input type="hidden" name="table" value="shelf5" />
+
+                            <button class="btn ">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p>No leftShelf5s found.</p>
+        }
+    }
+    <form class="grid shelf" method="post" asp-page-handler="Add5">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="shelf-title">
+            <input type="text" class="item-input" placeholder="Name" asp-for="NewLeftShelf5.Name"  />
+            <span asp-validation-for="NewLeftShelf5.Name" class="text-danger"></span>
+            </div>
+            <div class="shelf-title">
+                <input type="text" class="item-input" placeholder="Quantity" asp-for="NewLeftShelf5.Quantity" class="form-control" />
+                <span asp-validation-for="NewLeftShelf5.Quantity" class="text-danger"></span>
+            </div>
+            <div class="shelf-title">
+                <input type="text" class="item-input" placeholder="Threshold" asp-for="NewLeftShelf5.Threshold" class="form-control" />
+                <span asp-validation-for="NewLeftShelf5.Threshold" class="text-danger"></span>
+            </div>
+            <div class="shelf-title">
+                <input type="submit" value="Create" class="btn " />
+            </div>
+        </form> 
+
+        <h4 class="shelf-title">Shelf 4</h4>
+
+        @{
+        if (Model.LeftShelf4List != null)
+        {
+            foreach (var leftShelf4 in Model.LeftShelf4List)
+            {
+                <div class="grid shelf">
+                    <div>@leftShelf4.Name</div>
+                    <div>@leftShelf4.Quantity</div>
+                    <div>@leftShelf4.Threshold</div>
+                    <div>
+                        <form method="post" asp-page-handler="Delete" asp-route-id="@leftShelf4.Id">
+                        <input type="hidden" name="table" value="shelf4" />
+
+                            <button class="btn ">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p>No leftShelf4s found.</p>
+        }
+    }
+    <form class="grid shelf" method="post" asp-page-handler="Add4">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="shelf-title">
+            <input type="text" class="item-input" placeholder="Name" asp-for="NewLeftShelf4.Name"  />
+            <span asp-validation-for="NewLeftShelf4.Name" class="text-danger"></span>
+            </div>
+            <div class="shelf-title">
+                <input type="text" class="item-input" placeholder="Quantity" asp-for="NewLeftShelf4.Quantity" class="form-control" />
+                <span asp-validation-for="NewLeftShelf4.Quantity" class="text-danger"></span>
+            </div>
+            <div class="shelf-title">
+                <input type="text" class="item-input" placeholder="Threshold" asp-for="NewLeftShelf4.Threshold" class="form-control" />
+                <span asp-validation-for="NewLeftShelf4.Threshold" class="text-danger"></span>
+            </div>
+            <div class="shelf-title">
+                <input type="submit" value="Create" class="btn " />
+            </div>
+        </form> 
+
+
+
+
+        <h4 class="shelf-title">Shelf 3</h4>
+
+        @{
+        if (Model.LeftShelf3List != null)
+        {
+            foreach (var leftShelf3 in Model.LeftShelf3List)
+            {
+                <div class="grid shelf">
+                    <div>@leftShelf3.Name</div>
+                    <div>@leftShelf3.Quantity</div>
+                    <div>@leftShelf3.Threshold</div>
+                    <div>
+                        <form method="post" asp-page-handler="Delete" asp-route-id="@leftShelf3.Id">
+                        <input type="hidden" name="table" value="shelf3" />
+
+                            <button class="btn ">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p>No leftShelf3s found.</p>
+        }
+    }
+    <form class="grid shelf" method="post" asp-page-handler="Add3">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="shelf-title">
+            <input type="text" class="item-input" placeholder="Name" asp-for="NewLeftShelf3.Name"  />
+            <span asp-validation-for="NewLeftShelf3.Name" class="text-danger"></span>
+            </div>
+            <div class="shelf-title">
+                <input type="text" class="item-input" placeholder="Quantity" asp-for="NewLeftShelf3.Quantity" class="form-control" />
+                <span asp-validation-for="NewLeftShelf3.Quantity" class="text-danger"></span>
+            </div>
+            <div class="shelf-title">
+                <input type="text" class="item-input" placeholder="Threshold" asp-for="NewLeftShelf3.Threshold" class="form-control" />
+                <span asp-validation-for="NewLeftShelf3.Threshold" class="text-danger"></span>
+            </div>
+            <div class="shelf-title">
+                <input type="submit" value="Create" class="btn " />
+            </div>
+        </form> 
+
+
+
+
+
+        <h4 class="shelf-title">Shelf 2</h4>
+
+        @{
+        if (Model.LeftShelf2List != null)
+        {
+            foreach (var leftShelf2 in Model.LeftShelf2List)
+            {
+                <div class="grid shelf">
+                    <div>@leftShelf2.Name</div>
+                    <div>@leftShelf2.Quantity</div>
+                    <div>@leftShelf2.Threshold</div>
+                    <div>
+                        <form method="post" asp-page-handler="Delete" asp-route-id="@leftShelf2.Id">
+                        <input type="hidden" name="table" value="shelf2" />
+
+                            <button class="btn ">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p>No leftShelf2s found.</p>
+        }
+    }
+    <form class="grid shelf" method="post" asp-page-handler="Add2">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="shelf-title">
+            <input type="text" class="item-input" placeholder="Name" asp-for="NewLeftShelf2.Name"  />
+            <span asp-validation-for="NewLeftShelf2.Name" class="text-danger"></span>
+            </div>
+            <div class="shelf-title">
+                <input type="text" class="item-input" placeholder="Quantity" asp-for="NewLeftShelf2.Quantity" class="form-control" />
+                <span asp-validation-for="NewLeftShelf2.Quantity" class="text-danger"></span>
+            </div>
+            <div class="shelf-title">
+                <input type="text" class="item-input" placeholder="Threshold" asp-for="NewLeftShelf2.Threshold" class="form-control" />
+                <span asp-validation-for="NewLeftShelf2.Threshold" class="text-danger"></span>
+            </div>
+            <div class="shelf-title">
+                <input type="submit" value="Create" class="btn " />
+            </div>
+        </form> 
+
+
+
+
+        <h4 class="shelf-title">Shelf 1</h4>
+
+        @{
+        if (Model.LeftShelf1List != null)
+        {
+            foreach (var leftShelf1 in Model.LeftShelf1List)
+            {
+                <div class="grid shelf">
+                    <div>@leftShelf1.Name</div>
+                    <div>@leftShelf1.Quantity</div>
+                    <div>@leftShelf1.Threshold</div>
+                    <div>
+                        <form method="post" asp-page-handler="Delete" asp-route-id="@leftShelf1.Id">
+                        <input type="hidden" name="table" value="shelf1" />
+
+                            <button class="btn ">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p>No leftShelf1s found.</p>
+        }
+    }
+    <form class="grid shelf" method="post" asp-page-handler="Add1">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="shelf-title">
+            <input type="text" class="item-input" placeholder="Name" asp-for="NewLeftShelf1.Name"  />
+            <span asp-validation-for="NewLeftShelf1.Name" class="text-danger"></span>
+            </div>
+            <div class="shelf-title">
+                <input type="text" class="item-input" placeholder="Quantity" asp-for="NewLeftShelf1.Quantity" class="form-control" />
+                <span asp-validation-for="NewLeftShelf1.Quantity" class="text-danger"></span>
+            </div>
+            <div class="shelf-title">
+                <input type="text" class="item-input" placeholder="Threshold" asp-for="NewLeftShelf1.Threshold" class="form-control" />
+                <span asp-validation-for="NewLeftShelf1.Threshold" class="text-danger"></span>
+            </div>
+            <div class="shelf-title">
+                <input type="submit" value="Create" class="btn " />
+            </div>
+        </form> 
+
+
+
+
+        <h4 class="shelf-title">Floor</h4>
+
+        @{
+        if (Model.LeftFloorList != null)
+        {
+            foreach (var leftFloor in Model.LeftFloorList)
+            {
+                <div class="grid shelf">
+                    <div>@leftFloor.Name</div>
+                    <div>@leftFloor.Quantity</div>
+                    <div>@leftFloor.Threshold</div>
+                    <div>
+                        <form method="post" asp-page-handler="Delete" asp-route-id="@leftFloor.Id">
+                        <input type="hidden" name="table" value="floor" />
+
+                            <button class="btn ">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p>No leftFloor found.</p>
+        }
+    }
+    <form class="grid shelf" method="post" asp-page-handler="AddFloor">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="shelf-title">
+            <input type="text" class="item-input" placeholder="Name" asp-for="NewLeftFloor.Name"  />
+            <span asp-validation-for="NewLeftFloor.Name" class="text-danger"></span>
+            </div>
+            <div class="shelf-title">
+                <input type="text" class="item-input" placeholder="Quantity" asp-for="NewLeftFloor.Quantity" class="form-control" />
+                <span asp-validation-for="NewLeftFloor.Quantity" class="text-danger"></span>
+            </div>
+            <div class="shelf-title">
+                <input type="text" class="item-input" placeholder="Threshold" asp-for="NewLeftFloor.Threshold" class="form-control" />
+                <span asp-validation-for="NewLeftFloor.Threshold" class="text-danger"></span>
+            </div>
+            <div class="shelf-title">
+                <input type="submit" value="Create" class="btn " />
+            </div>
+        </form> 
+</body>
+
+
+
+<footer>
+
+</footer>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

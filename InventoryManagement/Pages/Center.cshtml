@@ -1,0 +1,65 @@
+@page
+@using InventoryManagement.Models;
+@using InventoryManagement.Services;
+@model InventoryManagement.Pages.CenterModel
+@{
+    ViewData["Title"] = "Center Closet";
+}
+
+<body>
+    <div class="text-center">
+        <h1 class="display-4">Center Closet Data</h1>
+        <div class="grid-head">
+            <div>Item</div>
+            <div>Quantity</div>
+            <div>Keep Above</div>
+            <div>Delete</div>
+        </div>
+
+        <h4 class="shelf-title">Center</h4>
+        @{
+    if (Model.CenterList != null)
+    {
+        foreach (var center in Model.CenterList)
+        {
+            <div class="grid shelf">
+                <div>@center.Name</div>
+                <div>@center.Quantity</div>
+                <div>@center.Threshold</div>
+                <div>
+                    <form method="post" asp-page-handler="Delete" asp-route-id="@center.Id">
+                        <button class="btn ">Delete</button>
+                    </form>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <p>No products found.</p>
+    }
+}
+
+        <form class="grid shelf" method="post" asp-page-handler="OnPost">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="shelf-title">
+            <input type="text" class="item-input" placeholder="Name" asp-for="NewCenter.Name"  />
+            <span asp-validation-for="NewCenter.Name" class="text-danger"></span>
+            </div>
+            <div class="shelf-title">
+                <input type="text" class="item-input" placeholder="Quantity" asp-for="NewCenter.Quantity" class="form-control" />
+                <span asp-validation-for="NewCenter.Quantity" class="text-danger"></span>
+            </div>
+            <div class="shelf-title">
+                <input type="text" class="item-input" placeholder="Threshold" asp-for="NewCenter.Threshold" class="form-control" />
+                <span asp-validation-for="NewCenter.Threshold" class="text-danger"></span>
+            </div>
+            <div class="shelf-title">
+                <input type="submit" value="Create" class="btn " />
+            </div>
+        </form> 
+    
+</body>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
