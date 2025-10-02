@@ -109,45 +109,9 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
 app.UseAuthorization();
 
 app.MapRazorPages();
 
-// Fallback for unknown paths (Render)
-app.MapFallback(context =>
-{
-    context.Response.Redirect("/"); // Redirect to home
-    return Task.CompletedTask;
-});
-
-
-
-using (var scope = app.Services.CreateScope())
-{
-    var services = scope.ServiceProvider;
-
-    var dbContexts = new object[]
-    {
-        services.GetRequiredService<LeftShelf1Context>(),
-        services.GetRequiredService<LeftShelf2Context>(),
-        services.GetRequiredService<LeftShelf3Context>(),
-        services.GetRequiredService<LeftShelf4Context>(),
-        services.GetRequiredService<LeftShelf5Context>(),
-        services.GetRequiredService<LeftShelf6Context>(),
-        services.GetRequiredService<LeftFloorContext>(),
-        services.GetRequiredService<RightShelf1Context>(),
-        services.GetRequiredService<RightShelf2Context>(),
-        services.GetRequiredService<RightShelf3Context>(),
-        services.GetRequiredService<RightShelf4Context>(),
-        services.GetRequiredService<RightShelf5Context>(),
-        services.GetRequiredService<RightShelf6Context>(),
-        services.GetRequiredService<RightFloorContext>(),
-        services.GetRequiredService<CenterContext>()
-    };
-
-    foreach (var ctx in dbContexts)
-    {
-        ((DbContext)ctx).Database.EnsureCreated();
-    }
-}
 app.Run();
