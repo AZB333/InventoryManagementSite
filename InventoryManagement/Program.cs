@@ -119,3 +119,30 @@ app.MapFallback(context =>
     context.Response.Redirect("/"); // Redirect to home
     return Task.CompletedTask;
 });
+
+
+using var scope = app.Services.CreateScope();
+var services = scope.ServiceProvider;
+
+// Ensure all databases are created
+var leftShelf6Context = services.GetRequiredService<LeftShelf6Context>();
+leftShelf6Context.Database.EnsureCreated();
+
+// Repeat for other contexts or loop through them
+var leftShelf5Context = services.GetRequiredService<LeftShelf5Context>();
+leftShelf5Context.Database.EnsureCreated();
+
+var leftShelf4Context = services.GetRequiredService<LeftShelf4Context>();
+leftShelf4Context.Database.EnsureCreated();
+
+var leftShelf3Context = services.GetRequiredService<LeftShelf3Context>();
+leftShelf3Context.Database.EnsureCreated();
+
+var leftShelf2Context = services.GetRequiredService<LeftShelf2Context>();
+leftShelf2Context.Database.EnsureCreated();
+
+var leftShelf1Context = services.GetRequiredService<LeftShelf1Context>();
+leftShelf1Context.Database.EnsureCreated();
+
+var leftFloorContext = services.GetRequiredService<LeftFloorContext>();
+leftFloorContext.Database.EnsureCreated();
