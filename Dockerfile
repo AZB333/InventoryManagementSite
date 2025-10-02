@@ -2,11 +2,12 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
-# Copy only the .csproj first (better caching)
+# Copy project files and restore
+COPY *.sln .
 COPY InventoryManagement/*.csproj ./InventoryManagement/
 RUN dotnet restore ./InventoryManagement/InventoryManagement.csproj
 
-# Copy everything else
+# Copy everything else and publish
 COPY . .
 WORKDIR /src/InventoryManagement
 RUN dotnet publish -c Release -o /app/publish
@@ -15,5 +16,5 @@ RUN dotnet publish -c Release -o /app/publish
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /app
 COPY --from=build /app/publish .
-EXPOSE 5257
+EXPOSE 8080
 ENTRYPOINT ["dotnet", "InventoryManagement.dll"]
